@@ -1,0 +1,21 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+
+<!-- Название у нас будет Product -->
+{% block title %}
+Отдельная статья
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+{% block content %}
+<h1>Отдельная публикация:</h1>
+<hr>
+<h5>автор: {{ news_one.author }}</h5>
+<h5>статья/новость: {{ news_one.category_type }}</h5>
+<h5>дата создания: {{ news_one.creation_date }}</h5>
+<h5>категория: {{ news_one.post_category.name }}</h5>
+<h5>заголовок: {{ news_one.title }}</h5>
+<h5>рейтинг: {{ news_one.rating }}</h5>
+<h5>текст: {{ news_one.text|censor }}</h5>
+{% endblock content %}
